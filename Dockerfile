@@ -15,7 +15,7 @@ RUN gem install bundler \
 COPY . .
 RUN bundle exec middleman build --clean --verbose
 
-FROM nginx:mainline-alpine
+FROM nginx:1.25.3-alpine3.18
 COPY ./nginx-http.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /srv/slate/build /usr/share/nginx/html
